@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cirrus-ui@0.7.0-patch.1/dist/cirrus.min.css" integrity="sha256-Uw+G2j/BKHvVZygNCtap518UUjigFCNIVfQIF8Ujp/4=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.typekit.net/pgo6igv.css">
+        <script src="https://kit.fontawesome.com/9f4238669f.js" crossorigin="anonymous"></script>
+        <script src="/static/ui.js"></script>
+        <title>{{template "pagetitle" .}}</title>
+    </head>
+    <body>
+    <div id="lds" class="lds-wrapper lds-visible">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <style>
+        .lds-wrapper {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.5s, opacity 0.5s linear;
+        }
+        .lds-visible {
+            visibility: visible !important;
+            opacity: 1 !important;
+            transition: opacity 0.5s linear !important;
+        }
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+        }
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        .lds-ring div:nth-child(3) {
+            -delay: -0.15s;
+        }
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <div class="header header-fixed unselectable header-dark header-animated">
+        <div class="header-brand">
+            <div class="nav-item no-hover">
+                <a href="/">
+                    <h6 class="title">N23Auth</h6>
+                </a>
+            </div>
+            <div class="nav-item nav-btn" id="header-btn">
+                <span></span>
+                <span></span>
+                <span></span> 
+            </div>
+        </div>
+        <div class="header-nav" id="header-menu">
+            <div class="nav-left">
+                <div class="nav-item text-center">
+                    <a href="//github.com/nekoscloud/hydra-client">
+                        <span class="icon">
+                            <i class="fa-brands fa-wrapper fa-github" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-item">
+                    <a href="/account">Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{template "content" .}}
+    <footer class="footer mt-2">
+        <div class="row level">
+            <div class="col-12 text-white">
+                <span class="faded">© <span id="copy"></span></span>
+                N23
+            </div>
+            <span class="col-12 text-gray-100">
+                <a class="text-gray-100" href="/privacy">Privacy</a>
+                 • 
+                <a class="text-gray-100" href="/terms">Terms</a>
+            </span>
+        </div>
+    </footer>
+    </body>
+</html>

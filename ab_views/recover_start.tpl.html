@@ -1,0 +1,40 @@
+{{define "pagetitle"}}N23Auth - Recover{{end}}
+
+{{define "content"}}
+<section class="section">
+    <div class="hero fullscreen">
+    <div class="hero-body">
+        <div class="content u-center mt-4">
+			<form class="u-flex-column u-justify-center" action="{{mountpathed "recover"}}" method="POST">
+				{{with .error}}
+					<div class="toast toast--danger mx-0">
+						<div class="btn-close" type="button" onclick="this.parentNode.style.display = 'none'"></div>
+						<p class="mr-3">{{.}}</p>
+					</div>
+					<br />
+				{{end}}
+				{{with .csrf_token}}
+					<input type="hidden" name="csrf_token" value="{{.}}" />
+				{{end}}
+					<label for="email" class="u-center">Email</label>
+					<input type="text" class="form-control u-center u-round-lg p-1 mb-2 my-1 max-w-xs" name="email" placeholder="example@example.com">
+					<button type="submit" class="u-center">Recover</button>
+					<div class="col-12 text-gray-900 u-center">
+					{{with .modules}}
+						{{with .recover}}
+							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "login"}}">Log in</a>
+						{{end}}
+					{{end -}}
+						• 
+					{{with .modules}}
+						{{with .register}}
+							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "register"}}">Register</a>
+						{{end}}
+					{{end -}}
+				</div>
+			</form>
+        </div>
+    </div>
+    </div>
+</section>
+{{end}}

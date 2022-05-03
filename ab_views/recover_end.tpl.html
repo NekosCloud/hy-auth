@@ -1,0 +1,60 @@
+{{define "pagetitle"}}N23Auth - Recover{{end}}
+
+{{define "content"}}
+<script>window.onload=function(){if(!document.getElementsByName("token")[0].value)window.location.href="/"}</script>
+<section class="section">
+    <div class="hero fullscreen">
+    <div class="hero-body">
+        <div class="content u-center mt-4">
+			<form class="u-flex-column u-justify-center" action="{{mountpathed "recover/end"}}" method="POST">
+				{{with .errors}}
+                    {{with (index . "")}}
+                        {{range .}}
+                        <div class="toast toast--danger mx-0">
+                            <div class="btn-close" type="button" onclick="this.parentNode.style.display = 'none'"></div>
+                            <p class="mr-3">{{.}}</p>
+                        </div>
+                        <br />
+                        {{end}}
+                    {{end}}
+				{{end -}}
+                <input type="hidden" name="token" value="{{.recover_token}}" />
+				{{with .csrf_token}}
+					<input type="hidden" name="csrf_token" value="{{.}}" />
+				{{end}}
+                <label for="password" class="u-center">Password</label>
+                <input type="password" class="form-control u-center u-round-lg p-1 mb-2 max-w-xs" name="password" placeholder="password" value="{{with .preserve}}{{with .email}}{{.}}{{end}}{{end}}">
+                {{with .errors}}
+                    {{range .password}}
+                        <span class="text-red-500">{{.}}</span>
+                        <br />
+                    {{end}}
+                {{end -}}
+                <label for="confirm_password" class="u-center">Confirm Password</label>
+                <input type="password" class="form-control u-center u-round-lg p-1 mb-2 max-w-xs" name="confirm_password" placeholder="password">
+                {{with .errors}}
+                    {{range .confirm_password}}
+                        <span class="text-red-500">{{.}}</span>
+                        <br />
+                    {{end}}
+                {{end -}}
+					<button type="submit" class="u-center">Recover</button>
+					<div class="col-12 text-gray-900 u-center">
+					{{with .modules}}
+						{{with .auth}}
+							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "login"}}">Log in</a>
+						{{end}}
+					{{end -}}
+						• 
+					{{with .modules}}
+						{{with .register}}
+							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "register"}}">Register</a>
+						{{end}}
+					{{end -}}
+				</div>
+			</form>
+        </div>
+    </div>
+    </div>
+</section>
+{{end}}
