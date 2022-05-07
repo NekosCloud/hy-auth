@@ -1,3 +1,6 @@
+# Priv keys
+keys.go
+config.toml
 # Binaries for programs and plugins
 *.exe
 *.exe~
