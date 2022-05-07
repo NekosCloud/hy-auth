@@ -13,7 +13,7 @@ func renderIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 func renderAccount(w http.ResponseWriter, r *http.Request) {
-	mustRender(w, r, "privacy", authboss.HTMLData{})
+	mustRender(w, r, "account", authboss.HTMLData{})
 }
 
 func renderPrivacy(w http.ResponseWriter, r *http.Request) {
@@ -37,6 +37,7 @@ func mustRender(w http.ResponseWriter, r *http.Request, name string, data authbo
 	}
 
 	current.MergeKV("csrf_token", nosurf.Token(r))
+	current.MergeKV("user", r.Context().Value(authboss.CTXKeyUser))
 	current.Merge(data)
 
 	err := templates.Render(w, name, current)

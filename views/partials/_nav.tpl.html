@@ -24,6 +24,9 @@
         <div class="nav-right">
             <div class="nav-item">
                 <a href="/account">Account</a>
+                {{with .user}}
+                    <a href="#" onclick="logout()">Log out</a>
+                {{end}}
             </div>
         </div>
     </div>

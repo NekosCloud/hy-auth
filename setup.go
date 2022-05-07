@@ -23,6 +23,9 @@ func setupAuthboss() {
 	// ab.Config.Paths.AuthLoginOK = "/account"
 	// ab.Config.Paths.LogoutOK = "/logout/ok"
 
+	// Auth methods
+	ab.Config.Modules.LogoutMethod = "DELETE"
+
 	// Set renderer
 	ab.Config.Core.ViewRenderer = NewHTML("/auth", "ab_views")
 

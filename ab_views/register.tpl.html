@@ -1,4 +1,4 @@
-{{define "pagetitle"}}N23Auth - Register{{end}}
+{{define "pagetitle"}}Register - N23Auth{{end}}
 
 {{define "content"}}
 <section class="section">
@@ -50,18 +50,10 @@
 						{{end}}
 					{{end -}}
 					<button type="submit" class="u-center">Register</button>
-					<div class="col-12 text-gray-900 u-center">
-					{{with .modules}}
-						{{with .recover}}
-							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "recover"}}">Recover</a>
-						{{end}}
-					{{end -}}
-						• 
-					{{with .modules}}
-						{{with .auth}}
-							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "login"}}">Log in</a>
-						{{end}}
-					{{end -}}
+					<div class="u-flex col-12 text-gray-900 u-center">
+						<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "recover"}}">Recover</a>
+						<a class="p-1 text-gray-900 u-flex-shrink-0">•</a>
+						<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "login"}}">Log in</a>
 				</div>
 			</form>
         </div>

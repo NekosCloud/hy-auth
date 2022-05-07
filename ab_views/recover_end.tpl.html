@@ -1,4 +1,4 @@
-{{define "pagetitle"}}N23Auth - Recover{{end}}
+{{define "pagetitle"}}Recover - N23Auth{{end}}
 
 {{define "content"}}
 <script>window.onload=function(){if(!document.getElementsByName("token")[0].value)window.location.href="/"}</script>
@@ -39,18 +39,10 @@
                     {{end}}
                 {{end -}}
 					<button type="submit" class="u-center">Recover</button>
-					<div class="col-12 text-gray-900 u-center">
-					{{with .modules}}
-						{{with .auth}}
-							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "login"}}">Log in</a>
-						{{end}}
-					{{end -}}
-						• 
-					{{with .modules}}
-						{{with .register}}
-							<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "register"}}">Register</a>
-						{{end}}
-					{{end -}}
+					<div class="u-flex col-12 text-gray-900 u-center">
+						<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "login"}}">Log in</a>
+                        <a class="p-1 text-gray-900 u-flex-shrink-0">•</a>
+						<a class="text-gray-900 mx-1 u u-C" href="{{mountpathed "register"}}">Register</a>
 				</div>
 			</form>
         </div>
